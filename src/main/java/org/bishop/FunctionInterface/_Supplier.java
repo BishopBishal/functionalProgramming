@@ -22,9 +22,9 @@ public class _Supplier {
 
     static Supplier<List<String>> getGetDbJbbcUrlSupplierList = ()->List.of(
             "jdbc://mysql/localhost:3306/mygateway",
-            "jdbc://mysql/localhost:3306/CoreEngine",
-            "jdbc://mysql/localhost:3306/IVRSecurity",
-            "jdbc://mysql/localhost:3306/Scheduler"
+            "jdbc://mysql/localhost:3306/ABCD",
+            "jdbc://mysql/localhost:3306/EFGB",
+            "jdbc://mysql/localhost:3306/ASDAD"
     );
 
 }

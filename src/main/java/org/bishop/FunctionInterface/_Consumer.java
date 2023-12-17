@@ -7,7 +7,7 @@ public class _Consumer {
     public static void main(String[] args) {
 
         //Consumer example
-        Customer newCustomer = new Customer("Bishop", "Jawahar Nagar");
+        Customer newCustomer = new Customer("Foo", "France");
         greetCustomer(newCustomer);
         greetCustomerConsumer.accept(newCustomer);
 

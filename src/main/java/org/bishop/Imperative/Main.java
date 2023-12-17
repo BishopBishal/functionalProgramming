@@ -1,38 +1,47 @@
-package org.bishop.Streams;
+package org.bishop.Imperative;
 
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.bishop.Streams._Streams.person.Gender.FEMALE;
-
-public class _Streams {
-
-
+// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
+// then press Enter. You can now see whitespace characters in your code.
+public class Main {
     public static void main(String[] args) {
-        List<person> collectionPerson = List.of(
-                new person("foo", "barr", 23, person.Gender.MALE),
-                new person("loo", "baar", 24, FEMALE),
-                new person("Tss", "asdad", 43, FEMALE),
+
+        List<person> collectionPerson = List.of(new person("foo", "barr", 23, person.Gender.MALE),
+                new person("loo", "baar", 24, person.Gender.FEMALE),
+                new person("Tss", "asdad", 43, person.Gender.FEMALE),
                 new person("LOJ", "LSf", 51, person.Gender.MALE),
                 new person("ASda", "sda", 60, person.Gender.LGBTQ),
                 new person("Test", "SMLIA", 92, person.Gender.Others));
 
+        //Information Approach to find the females only
+        List<person> females = new ArrayList<>();
+        for (person p : collectionPerson) {
+            if (p.gender.equals(person.Gender.FEMALE)) {
+                females.add(p);
+            }
+        }
+        for (person female : females) {
+            System.out.println(female);
+        }
 
-        collectionPerson.stream()
-                .map(person::getGender)
-                .collect(Collectors.toSet())
-                .forEach(System.out::println);
 
-        collectionPerson.stream()
-                .map(person::getFirstName)
-                .mapToInt(String::length)
-                .forEach(System.out::println);
+        //Declarative Approach to find females
+        System.out.println("Declarative approach");
 
-        System.out.println(collectionPerson.stream().allMatch(person -> FEMALE.equals(person.gender)));
-        System.out.println(collectionPerson.stream().anyMatch(person -> FEMALE.equals(person.gender)));
-        System.out.println(collectionPerson.stream().noneMatch(person -> FEMALE.equals(person.gender)));
+
+        List<person> declarativeFemales = collectionPerson.stream().filter(person -> person.gender
+                        .equals(Main.person.Gender.FEMALE))
+                .collect(Collectors.toList());
+        declarativeFemales.forEach(System.out::println);
+
+//                                    forEach(System.out::println);
+
+
     }
+
     public static class person {
         private final String firstName;
         private final String lastName;
@@ -75,6 +84,4 @@ public class _Streams {
 
 
     }
-
 }
-
